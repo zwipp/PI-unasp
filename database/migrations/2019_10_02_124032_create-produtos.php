@@ -15,9 +15,7 @@ class CreateProdutos extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('nome', ['notebook', 'desktop','monitor']);
             $table->bigInteger('qnt');
-            $table->enum('estado', ['novo', 'bom','analise']);
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('usuarios')->onDelete('cascade');
             $table->string('foto')->default('images/fotoprodutos.jpg');;

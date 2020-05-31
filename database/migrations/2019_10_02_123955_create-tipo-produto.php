@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePedidos extends Migration
+class CreateTipoProduto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreatePedidos extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('tipoProduto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('qnt');
-            $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios')->onDelete('cascade');
-            $table->timestamps();
+            $table->enum('nome', ['notebook', 'desktop','monitor']);
         });
     }
 
@@ -29,6 +26,6 @@ class CreatePedidos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('tipoProduto');
     }
 }
